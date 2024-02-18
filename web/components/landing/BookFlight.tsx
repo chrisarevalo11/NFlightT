@@ -7,12 +7,12 @@ import People from '../icons/People'
 export default function BookFlight(): JSX.Element {
 	return (
 		<section className='w-full mx-auto p-5 space-y-5 bg-purple-700 shadow-lg rounded-xl'>
-			<h1 className='text-3xl text-white font-bold'>Book a flight</h1>
+			<h1 className='text-3xl text-white font-bold'>Agendar Vuelo</h1>
 			<div className='grid md:grid-cols-2 justify-items-center lg:grid-cols-5 gap-3'>
 				<label className='form-control w-full max-w-xs'>
 					<div className='label'>
 						<span className='label-text text-white'>
-							<Departure className='inline size-6' /> Departure
+							<Departure className='inline size-6' /> Origen
 						</span>
 					</div>
 					<input
@@ -24,7 +24,7 @@ export default function BookFlight(): JSX.Element {
 				<label className='form-control w-full max-w-xs'>
 					<div className='label'>
 						<span className='label-text text-white'>
-							<Land className='inline size-6' /> Arrival
+							<Land className='inline size-6' /> Destino
 						</span>
 					</div>
 					<input
@@ -36,7 +36,7 @@ export default function BookFlight(): JSX.Element {
 				<label className='form-control w-full max-w-xs'>
 					<div className='label'>
 						<span className='label-text text-white'>
-							<Calendar className='inline size-6' /> From
+							<Calendar className='inline size-6' /> Desde
 						</span>
 					</div>
 					<input type='date' className='input input-bordered w-full max-w-xs' />
@@ -44,7 +44,7 @@ export default function BookFlight(): JSX.Element {
 				<label className='form-control w-full max-w-xs'>
 					<div className='label'>
 						<span className='label-text text-white'>
-							<Calendar className='inline size-6' /> To
+							<Calendar className='inline size-6' /> Hasta
 						</span>
 					</div>
 					<input type='date' className='input input-bordered w-full max-w-xs' />
@@ -52,7 +52,7 @@ export default function BookFlight(): JSX.Element {
 				<label className='form-control w-full max-w-xs'>
 					<div className='label'>
 						<span className='label-text text-white'>
-							<People className='inline size-6' /> Passengers
+							<People className='inline size-6' /> Pasajeros
 						</span>
 					</div>
 					<input
@@ -63,7 +63,7 @@ export default function BookFlight(): JSX.Element {
 				</label>
 			</div>
 			<Link href='/book' className='btn btn-accent'>
-				Book Now
+				Agendar
 			</Link>
 		</section>
 	)

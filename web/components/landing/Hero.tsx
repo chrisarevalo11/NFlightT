@@ -2,8 +2,9 @@ export default function Hero(): JSX.Element {
 	return (
 		<section className='w-full'>
 			<h1 className='text-5xl max-w-[600px] text-center mx-auto'>
-				We <span className='font-bold text-purple-700'>transform</span> the air{' '}
-				<span className='font-bold text-purple-700'>travelling experience</span>
+				<span className='font-bold text-purple-700'>Transformamos</span> la
+				experiencia del{' '}
+				<span className='font-bold text-purple-700'>tránsito aéreo</span>
 			</h1>
 			<div className='my-[100px] w-full flex justify-center relative'>
 				<video

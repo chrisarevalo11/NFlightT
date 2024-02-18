@@ -28,7 +28,7 @@ export function UiLayout({ children }: { children: ReactNode }) {
 					<WalletButton />
 				</div>
 			</div>
-			<div className='flex-grow px-12'>
+			<div className='flex-grow px-2'>
 				<Suspense
 					fallback={
 						<div className='text-center my-32'>
