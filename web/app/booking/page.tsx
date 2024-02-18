@@ -21,21 +21,19 @@ import { mplTokenMetadata } from '@metaplex-foundation/mpl-token-metadata'
 import toast from 'react-hot-toast'
 import { base58 } from '@metaplex-foundation/umi-serializers-encodings'
 import { firebaseApi } from '@/helpers/functions/firebase'
-// dirty way to json serialize bigint
+import Plane from '@/components/booking/Plane'
+import BuySeat from '@/components/booking/BuySeat'
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 ;(BigInt.prototype as any).toJSON = function () {
 	return this.toString()
 }
 
 export default function Page() {
-	const {
-		addTicket,
-		getAllTickets,
-		getTicketByLeafId,
-		getTicketsByOwner,
-		updateTicket
-	} = firebaseApi()
+	const { addTicket, getAllTickets, getTicketsByOwner } = firebaseApi()
 	const { connection } = useConnection()
 	const wallet = useWallet()
+	const [selectedSeat, setSelectedSeat] = useState<number | null>(null)
 	const [treeId, setTreeId] = useState<string>()
 	const [treeConfig, setTreeConfig] = useState<string>()
 	const [treeInfo, setTreeInfo] = useState<string>()
@@ -62,10 +60,18 @@ export default function Page() {
 			console.log('🔥 tickets', tickets)
 			console.log('🔥🔥 ticketsByOwner', ticketsByOwner)
 		})()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [getAllTickets])
 
 	return (
-		<div className='flex gap-y-4 flex-col pb-12 min-w-full'>
+		<div className='flex gap-y-4 flex-col my-12 max-w-[1200px] mx-auto'>
+			<h1 className='text-4xl font-bold text-primary text-center'>
+				Select a seat
+			</h1>
+			<div className='flex justify-evenly items-center flex-col md:flex-row mt-10 gap-10'>
+				<Plane selectedSeat={selectedSeat} setSelectedSeat={setSelectedSeat} />
+				<BuySeat selectedSeat={selectedSeat} />
+			</div>
 			{loading && <span className='loading loading-dots loading-lg'></span>}
 			<button
 				className='btn'
@@ -87,6 +93,7 @@ export default function Page() {
 						setTreeId(merkleTree.publicKey)
 						console.log('created tree', sig)
 						toast.success(`Tree created, ${sig}`)
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any
 					} catch (error: any) {
 						console.error(error)
 						toast.error(error.message)
@@ -127,6 +134,7 @@ export default function Page() {
 
 						const treeInfo = await fetchMerkleTree(umi, publicKey(treeId))
 						setTreeInfo(JSON.stringify(treeInfo, null, 2))
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any
 					} catch (error: any) {
 						console.error(error)
 						toast.error(error.message)
@@ -202,6 +210,7 @@ export default function Page() {
 
 						setCounter(counter => counter + 1)
 						toast.success(`cNFT minted, ${sig}`)
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any
 					} catch (error: any) {
 						console.error(error)
 						toast.error(error.message)
@@ -243,6 +252,7 @@ export default function Page() {
 
 						console.log('🔥')
 						setCnftInfo(JSON.stringify(cnft, null, 2))
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any
 					} catch (error: any) {
 						console.error(error)
 						toast.error(error.message)
@@ -308,6 +318,7 @@ export default function Page() {
 						console.log('transfer', sig)
 
 						toast.success(`cNFT transferred, ${sig}`)
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any
 					} catch (error: any) {
 						console.error(error)
 						toast.error(error.message)
