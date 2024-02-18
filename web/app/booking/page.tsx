@@ -1,3 +1,5 @@
+'use client'
+
 import {
 	MetadataArgsArgs,
 	createTree,
@@ -24,7 +26,7 @@ import { firebaseApi } from '@/helpers/functions/firebase'
 	return this.toString()
 }
 
-export function CnftUi() {
+export default function Page() {
 	const {
 		addTicket,
 		getAllTickets,

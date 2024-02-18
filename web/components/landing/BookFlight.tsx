@@ -62,7 +62,7 @@ export default function BookFlight(): JSX.Element {
 					/>
 				</label>
 			</div>
-			<Link href='/book' className='btn btn-accent'>
+			<Link href='/booking' className='btn btn-accent'>
 				Book Now
 			</Link>
 		</section>
